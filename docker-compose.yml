@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  meta-game-pg:
+    container_name: "meta-game-pg"
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    restart: always
+    ports:
+      - 4000:4000
+    environment:
+      - PORT=4000
+    volumes:
+      - ./server:/app/
+      - /app/node_modules
