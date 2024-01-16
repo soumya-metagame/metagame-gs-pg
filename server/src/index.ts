@@ -2,7 +2,7 @@ import express, { Express, Request, Response } from "express";
 import { connect } from "mongoose";
 import dotenv from "dotenv";
 import paymentUrl from './routes/paymentUrl.route'
-import {celebrate, Joi, errors, Segments} from 'celebrate'
+import {errors} from 'celebrate'
 
 dotenv.config();
 import config from "../config";
