@@ -15,10 +15,10 @@ interface capturePaymentType {
     couponStatus:string;
     couponReferenceNumber:string;
     external_id:string;
-    txnTime:string
+    txnTime:string;
+    CAPTURE_PAYMENT_URL:string
 }
 
-const CAPTURE_PAYMENT_URL = ""
 
 const capturePaymentCallBack = 
     async (reqData:capturePaymentType, next:NextFunction ) =>{
@@ -29,9 +29,9 @@ const capturePaymentCallBack =
 
         try{
 
-            const response = await axios.post(
-                `${CAPTURE_PAYMENT_URL}/api/v1/external/url/generate`,
-                reqData,
+            const response = await axios.get(
+                `${reqData.CAPTURE_PAYMENT_URL}`,
+                // reqData,
                 
               );
             
@@ -39,6 +39,7 @@ const capturePaymentCallBack =
               return response.data
         }
         catch (error){
+
           return {
             error: true,
             message: error,

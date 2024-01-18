@@ -8,6 +8,7 @@ const capturePayment = catchAsync (
     async (req: Request, res: Response, next: NextFunction) =>{
         const {
             upiId,
+            amount,
             customerName,
             custRefNo,
             orderId,
@@ -16,7 +17,8 @@ const capturePayment = catchAsync (
             couponStatus,
             couponReferenceNumber,
             external_id,
-            txnTime
+            txnTime,
+            CAPTURE_PAYMENT_URL
         } = req.body;
 
         if (!req.body) {
