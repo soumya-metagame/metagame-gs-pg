@@ -5,6 +5,27 @@ import {celebrate, Joi, errors, Segments} from 'celebrate'
 
 const router = Router();
 
+/**
+   * @openapi
+   * /payment_url:
+   *  post:
+   *    tags:
+   *      - Authenticate
+   *    summary: login using google
+   *    requestBody:
+   *      content:
+   *        application/json:
+   *          schema:
+   *            type: object
+   *            properties:
+   *              code:
+   *                type: string
+   *                required: true
+   *    responses:
+   *      '200':
+   *        description: Successfully registered user
+   */
+
 router.route('/payment_url').post(
     celebrate({
       [Segments.BODY]: Joi.object().keys({
@@ -18,6 +39,27 @@ router.route('/payment_url').post(
     }),
     getpaymentRequestUrl as any
   );
+
+  /**
+   * @openapi
+   * /capture_payment:
+   *  post:
+   *    tags:
+   *      - Authenticate
+   *    summary: login using google
+   *    requestBody:
+   *      content:
+   *        application/json:
+   *          schema:
+   *            type: object
+   *            properties:
+   *              code:
+   *                type: string
+   *                required: true
+   *    responses:
+   *      '200':
+   *        description: Successfully registered user
+   */
 
   router.route('/capture_payment').post(
     celebrate({
