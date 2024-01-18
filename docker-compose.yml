@@ -10,6 +10,7 @@ services:
       - 4000:4000
     environment:
       - PORT=4000
+      - DB_CONNECTION_STRING=mongodb+srv://soumya:5SPPibFbgO@cluster0.bscpenz.mongodb.net/metagame-pg?retryWrites=true&w=majority
     volumes:
       - ./server:/app/
       - /app/node_modules

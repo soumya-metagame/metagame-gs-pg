@@ -6,6 +6,7 @@ import {errors} from 'celebrate'
 
 dotenv.config();
 import config from "../config";
+import swaggerDocs from "./doc/swagger";
 
 
 const app: Express = express();
@@ -26,6 +27,7 @@ connect(DB as string)
     );
     app.listen(PORT, () => {
       console.log(`Payment Gateway server is running on port ${PORT}`);
+      swaggerDocs(app, PORT);
     });
   })
   .catch((err) => console.log(`Error: ${err}`));

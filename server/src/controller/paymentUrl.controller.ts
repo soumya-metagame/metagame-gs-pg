@@ -18,8 +18,9 @@ const getpaymentRequestUrl = catchAsync(
         if (!req.body) {
             next(new AppError("Please fill all the required fields", 400));
         }
-         const response = await getVoucherPaymentUrl(req.body,next)
-         console.log("response",response)
+
+         const requestBody = req.body;
+         const response = await getVoucherPaymentUrl(requestBody,next)
 
          const newPaymentUrl = await paymentRequestUrl.create({
             userId,
