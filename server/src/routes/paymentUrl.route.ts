@@ -75,7 +75,6 @@ router.route('/payment_url').post(
         couponReferenceNumber:Joi.string().required(),
         external_id:Joi.string().required(),
         txnTime:Joi.string().required(),
-        CAPTURE_PAYMENT_URL:Joi.string().required(),
 
       }),
     }),

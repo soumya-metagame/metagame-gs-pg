@@ -1,7 +1,7 @@
 import { NextFunction, Response } from "express";
 import { AppError } from "../utils/appError";
 import { Request, catchAsync } from "../utils/catchAsync";
-import { capturePaymentCallBack } from "../paymentService/capture.payment";
+import { paymentCapture } from "../model/capture.payment";
 
 
 const capturePayment = catchAsync (
@@ -18,22 +18,34 @@ const capturePayment = catchAsync (
             couponReferenceNumber,
             external_id,
             txnTime,
-            CAPTURE_PAYMENT_URL
         } = req.body;
 
         if (!req.body) {
             next(new AppError("Please fill all the required fields", 400));
         }
 
-        const reqData = req.body;
-        const response = await capturePaymentCallBack(reqData,next)
 
 
-        res.status(201).json({
+        const newPaymentCapture = await paymentCapture.create({
+            upiId,
+            amount,
+            customerName,
+            custRefNo,
+            orderId,
+            transactionId,
+            txnStatus,
+            couponStatus,
+            couponReferenceNumber,
+            external_id,
+            txnTime,
+           
+          });
+
+          res.status(201).json({
             status: "success",
             error: false,
-            message: "paymentRequestUrl get successfully",
-            data: response,
+            message: "Payment Capture  successfully",
+            data: newPaymentCapture,
           });
 
 
