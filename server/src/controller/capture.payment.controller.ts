@@ -48,6 +48,8 @@ const capturePayment = catchAsync (
             data: newPaymentCapture,
           });
 
+          console.log("response get from 3rd party",res)
+
 
     }
 );
