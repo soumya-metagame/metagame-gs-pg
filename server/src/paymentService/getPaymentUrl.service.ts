@@ -1,7 +1,6 @@
 import axios from "axios";
 import { NextFunction, Response } from "express";
 import { AppError } from "../utils/appError";
-import { Request, catchAsync } from "../utils/catchAsync";
 import exp from "constants";
 
 interface PaymentRequestUrlType {
