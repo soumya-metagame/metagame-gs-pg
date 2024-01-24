@@ -12,6 +12,8 @@ const getpaymentRequestUrl = catchAsync(
             customerName,
             mobileNumber,
             referenceId,
+            amount,
+            emailId,
             returnUrl,
 
         } = req.body;
@@ -27,6 +29,8 @@ const getpaymentRequestUrl = catchAsync(
             customerName,
             mobileNumber,
             referenceId,
+            amount,
+            emailId,
             returnUrl,
             dataUrl:response?.data?.url
            

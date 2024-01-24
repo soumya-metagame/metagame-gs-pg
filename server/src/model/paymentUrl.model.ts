@@ -7,8 +7,10 @@ interface PaymentRequestUrlType {
     customerName: string;
     mobileNumber: string;
     referenceId: string;
+    amount: string;
+    emailId:string;
     returnUrl: string;
-    dataUrl:string
+    dataUrl:string;
   }
 
   const paymentRequestUrlSchema = new Schema<PaymentRequestUrlType>({
@@ -16,6 +18,8 @@ interface PaymentRequestUrlType {
     customerName: { type: String },
     mobileNumber: { type: String },
     referenceId: { type: String, required: true },
+    amount: { type: String, required: true },
+    emailId: { type: String, required: true },
     dataUrl: { type: String, required: true },
 
 

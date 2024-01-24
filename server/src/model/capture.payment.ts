@@ -23,9 +23,6 @@ const paymentCaptureSchema = new Schema<capturePaymentType>({
     orderId: { type: String, required: true },
     transactionId: { type: String, required: true },
     txnStatus: { type: String,required: true },
-    couponStatus: { type: String },
-    couponReferenceNumber: { type: String, required: true },
-    external_id: { type: String, required: true },
     txnTime: { type: String, required: true },
 
   })

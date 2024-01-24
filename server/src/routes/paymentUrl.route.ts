@@ -33,6 +33,8 @@ router.route('/payment_url').post(
         customerName: Joi.string().required(),
         mobileNumber: Joi.string().required(),
         referenceId: Joi.string().required(),
+        amount: Joi.string().required(),
+        emailId: Joi.string().required(),
         returnUrl: Joi.string().required(),
 
       }),
@@ -71,9 +73,6 @@ router.route('/payment_url').post(
         orderId: Joi.string().required(),
         transactionId: Joi.string().required(),
         txnStatus:Joi.string().required(),
-        couponStatus:Joi.string().required(),
-        couponReferenceNumber:Joi.string().required(),
-        external_id:Joi.string().required(),
         txnTime:Joi.string().required(),
 
       }),

@@ -14,9 +14,6 @@ const capturePayment = catchAsync (
             orderId,
             transactionId,
             txnStatus,
-            couponStatus,
-            couponReferenceNumber,
-            external_id,
             txnTime,
         } = req.body;
 
@@ -34,9 +31,6 @@ const capturePayment = catchAsync (
             orderId,
             transactionId,
             txnStatus,
-            couponStatus,
-            couponReferenceNumber,
-            external_id,
             txnTime,
            
           });
