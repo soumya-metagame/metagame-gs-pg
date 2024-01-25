@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { getpaymentRequestUrl } from "../controller/paymentUrl.controller";
-import {capturePayment} from '../controller/capture.payment.controller'
+import {capturePayment,getCapturePaymentStatus} from '../controller/capture.payment.controller'
 import {celebrate, Joi, errors, Segments} from 'celebrate'
 
 const router = Router();
@@ -79,6 +79,7 @@ router.route('/payment_url').post(
     }),
     capturePayment as any
   );
+  router.route("/capture_payment/:id").get(getCapturePaymentStatus as any);
 
  
 

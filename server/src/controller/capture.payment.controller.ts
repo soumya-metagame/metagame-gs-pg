@@ -48,6 +48,26 @@ const capturePayment = catchAsync (
     }
 );
 
+const getCapturePaymentStatus = catchAsync(
+    async (req:Request, res:Response, next:NextFunction) =>{
+        const refId = req.params.id;
+
+        const capturePayment = await paymentCapture.find({orderId:refId})
+
+        if (!capturePayment) {
+            return next(new AppError(`No capture payment found with this id ${refId}`, 404));
+          }
+
+          res.status(200).json({
+            status: "success",
+            error: false,
+            message: "capture payment fetched successfully",
+            data: capturePayment,
+          });
+    }
+)
+
 export {
-    capturePayment
+    capturePayment,
+    getCapturePaymentStatus
 }
