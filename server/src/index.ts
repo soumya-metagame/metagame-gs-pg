@@ -3,6 +3,7 @@ import { connect } from "mongoose";
 import dotenv from "dotenv";
 import paymentUrl from './routes/paymentUrl.route'
 import {errors} from 'celebrate'
+import cors from "cors";
 
 dotenv.config();
 import config from "../config";
@@ -15,6 +16,7 @@ const DB = config.database.connectionString;
 
 
 app.use(express.json());
+app.use(cors());
 app.use("/api/v1",paymentUrl );
 app.use(errors());
 
