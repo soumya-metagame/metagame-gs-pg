@@ -2,6 +2,7 @@ import { NextFunction, Response } from "express";
 import { AppError } from "../utils/appError";
 import { Request, catchAsync } from "../utils/catchAsync";
 import { paymentCapture } from "../model/capture.payment";
+import { io } from "..";
 
 
 const capturePayment = catchAsync (
@@ -35,6 +36,13 @@ const capturePayment = catchAsync (
            
           });
 
+          io.emit('paymentCapture', {
+            status: 'success',
+            error: false,
+            message: 'Payment Capture successfully',
+            data: newPaymentCapture,
+          });
+
           res.status(201).json({
             status: "success",
             error: false,
@@ -42,7 +50,7 @@ const capturePayment = catchAsync (
             data: newPaymentCapture,
           });
 
-          console.log("response get from 3rd party",res)
+        //   console.log("response get from 3rd party",res)
 
 
     }
